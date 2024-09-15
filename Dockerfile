@@ -1,5 +1,7 @@
 # Use the official Golang image as the base image
 FROM golang:1.23 AS builder
+ARG TARGETOS
+ARG TARGETARCH
 
 WORKDIR /workspace
 # Copy the Go Modules manifests
@@ -13,7 +15,7 @@ RUN go mod download
 COPY main.go main.go
 
 # Build
-RUN go build -o log-routine main.go
+RUN CGO_ENABLED=0 GOOS=${TARGETOS:-linux} GOARCH=${TARGETARCH} go build -a -o log-routine main.go
 
 # Use distroless as minimal base image to package the manager binary
 FROM gcr.io/distroless/static:nonroot
