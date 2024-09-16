@@ -2,10 +2,6 @@
 
 `log-loop` is a utility that generates nested loops based on environment variables and outputs indexed values along with UUIDs.
 
-## GitHub Repository
-
-[https://github.com/kuoss/log-loop](https://github.com/kuoss/log-loop)
-
 ## Docker Image
 
 The Docker image is available at:
