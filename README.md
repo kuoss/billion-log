@@ -31,8 +31,8 @@ docker run --rm -e LOOP_COUNTS="1000,100" ghcr.io/kuoss/log-loop:latest
 
 ### Example Output
 ```
-a=000 b=000 uuid=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-a=000 b=001 uuid=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+a=000 b=00 uuid=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+a=000 b=01 uuid=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ...
-a=999 b=099 uuid=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+a=999 b=99 uuid=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
