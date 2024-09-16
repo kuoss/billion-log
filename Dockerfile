@@ -15,12 +15,12 @@ RUN go mod download
 COPY main.go main.go
 
 # Build
-RUN CGO_ENABLED=0 GOOS=${TARGETOS:-linux} GOARCH=${TARGETARCH} go build -a -o log-routine main.go
+RUN CGO_ENABLED=0 GOOS=${TARGETOS:-linux} GOARCH=${TARGETARCH} go build -a -o log-loop main.go
 
 # Use distroless as minimal base image to package the manager binary
 FROM gcr.io/distroless/static:nonroot
 WORKDIR /
-COPY --from=builder /workspace/log-routine .
+COPY --from=builder /workspace/log-loop .
 USER 65532:65532
 
-ENTRYPOINT ["/log-routine"]
+ENTRYPOINT ["/log-loop"]
