@@ -13,7 +13,6 @@ func getLoopCountsFromEnv() []int {
 	defaultCounts := []int{1000, 1000}
 	envValue := os.Getenv("LOOP_COUNTS")
 	if envValue == "" {
-		fmt.Println("LOOP_COUNTS not set, using default:", defaultCounts)
 		return defaultCounts
 	}
 
@@ -22,7 +21,6 @@ func getLoopCountsFromEnv() []int {
 	for i, countStr := range countStrings {
 		count, err := strconv.Atoi(countStr)
 		if err != nil || count <= 0 {
-			fmt.Printf("Invalid LOOP_COUNTS value at index %d: %s, using default: %v\n", i, countStr, defaultCounts)
 			return defaultCounts
 		}
 		loopCounts[i] = count
@@ -32,7 +30,7 @@ func getLoopCountsFromEnv() []int {
 
 func getDepthPrefix(depth int) string {
 	if depth >= 0 && depth < 26 {
-		return string('a' + depth)
+		return string(rune('a' + depth))
 	}
 	return "?"
 }
