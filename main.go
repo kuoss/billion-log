@@ -37,17 +37,11 @@ func getDepthPrefix(depth int) string {
 	return "?"
 }
 
-func getZeroPaddedFormat(loopSize int) string {
-	digits := len(strconv.Itoa(loopSize - 1))
-	return "%0" + strconv.Itoa(digits) + "d"
-}
-
 func generateLoops(loopCounts []int, depth int, currentIndices []string) {
-	zeroPaddedFormat := getZeroPaddedFormat(loopCounts[depth])
 	prefix := getDepthPrefix(depth)
 
-	for i := 0; i < loopCounts[depth]; i++ {
-		formattedIndex := fmt.Sprintf("%s=%s", prefix, fmt.Sprintf(zeroPaddedFormat, i))
+	for i := 1; i <= loopCounts[depth]; i++ {
+		formattedIndex := fmt.Sprintf("%s=%d", prefix, i)
 		newIndices := append(currentIndices, formattedIndex)
 
 		if depth == len(loopCounts)-1 {
